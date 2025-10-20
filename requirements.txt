@@ -9,4 +9,3 @@ matplotlib
 seaborn
 wordcloud
 pillow
-
