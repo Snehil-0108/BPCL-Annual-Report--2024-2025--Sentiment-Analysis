@@ -20,9 +20,9 @@ import seaborn as sns
 from wordcloud import WordCloud
 import warnings
 
-warnings.filterwarnings("ignore", category=UserWarning, module="pdfminer")
-warnings.filterwarnings("ignore", category=UserWarning, module="pdfplumber")
+# ---------------------- WARNINGS --------------------------
 warnings.filterwarnings("ignore")
+warnings.filterwarnings("ignore", category=UserWarning)
 
 # ---------------------- PAGE CONFIG -----------------------
 st.set_page_config(
@@ -113,8 +113,9 @@ def style_plot(fig, ax, title):
     ax.xaxis.label.set_color('#004b87')
     ax.yaxis.label.set_color('#004b87')
     ax.tick_params(colors='#004b87')
+    # avoid edgecolor warnings
     for spine in ax.spines.values():
-        spine.set_edgecolor('#e1eaf6')
+        spine.set_visible(False)
 
 # ---------------------- MAIN APP -------------------------
 def main():
@@ -229,6 +230,6 @@ def main():
         st.title("💠 BPCL Annual Report Analyzer")
         st.info("Please upload the BPCL Annual Report PDF to start the analysis.")
 
-# ---------------------- RUN -----------------------------
+# ---------------------- RUN APP -------------------------
 if __name__ == "__main__":
     main()
